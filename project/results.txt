@@ -1,0 +1,94 @@
+Shihab Karim
+skarim9@bu.edu
+Final Project Part V
+
+puzzles with 5-move optimal solutions
+----------------------------------------------------------------------
+algorithm                  num. solved   	    avg. moves    	   avg. states tested
+-----------------------------------------------------------------------------------------------------------------------
+random				10			6			368.2
+BFS				10			5			47.1
+DFS (depth limit 20)		10			16.2			19072.7
+DFS (depth limit 50)		10			48.2			49043.0
+Greedy Search (using h1) 	10			5.4			70.3
+A* (using h1)			10			5			6.5
+
+
+puzzles with 10-move optimal solutions
+----------------------------------------------------------------------
+algorithm                  num. solved   	    avg. moves    	   avg. states tested
+-----------------------------------------------------------------------------------------------------------------------
+random				9			10			1895.2
+BFS				10			10			747.4
+DFS (depth limit 20)		10			18.8			24858
+DFS (depth limit 50)		9			49.1			64316.7
+Greedy Search (using h1) 	8			76			325.625
+A* (using h1)			10			10			27.3
+
+
+puzzles with 15-move optimal solutions
+----------------------------------------------------------------------
+algorithm                  num. solved   	     avg. moves          avg. states tested
+-----------------------------------------------------------------------------------------------------------------------
+random				7			15.6			10541
+BFS				10			15			12672
+DFS (depth limit 20)		10			17.8			68659
+DFS (depth limit 50)		8			48.5			30240.5
+Greedy Search (using h1) 	6			90.3			2718
+A* (using h1)			10			15			313.8
+
+
+Based on the data collected on the three tables above, the algorithms that have consistently produced the more relaible and optimal results were BFS and A* as they have both solved every puzzle in each file and have achieved the lowest and most optimal average number of moves. This makes sense since BFS's strategy of FIFO allows the algorithm to not go too deep into the successors, while A*'s priority allows it to test the least number of states before reaching a solution. DFS with a large depth limit was not too successful as the large depth limit made the algorithm more time and memory consuming. Random was also one of the least sucessful algorithms since it will go down a random path and that path may be a time-consuming one. Finally, Greedy was the least successful because it does not take into account the cost of getting into its current state and will sometimes have no solution because it will go down on an infinite path.
+
+
+heuristic h2
+-------------------
+This heuristic function utilizes a board method called turns_from_goal(self). This method counts the amount of steps or turns each number/tile is from their respective goal state and position, adds together each tile's turns from goal position, and gets the total number of turns from the goal state. This method takes into account all the tiles on board except the empty tile. Then, this heuristic function takes into account the current and respective positions of each tile and how many turns does each tile need in order to reach their respective goal position. Once it adds up all the turns, its total number of turns will be a much more accurate estimate of the minimum number of turns the puzzle can be solved in. This heuristic function is more effective than h1 because its priority will have a greater range than that of h1 (h1's priority only went from -1 to -8, while h2 has a larger range), allowing for easier comparisions between successors for informed searches.
+
+
+puzzles with 18-move optimal solutions
+----------------------------------------------------------------------
+algorithm                  num. solved   	     avg. moves    	  	  avg. states tested
+-----------------------------------------------------------------------------------------------------------------------
+Greedy (heuristic h1)		 6		        136.3				2237.8
+Greedy (heuristic h2)		10		        76.2				725.7
+
+A* (heuristic h1)		10		        18				1602
+A* (heuristic h2)		10		        18				239.3
+
+
+puzzles with 21-move optimal solutions
+----------------------------------------------------------------------
+algorithm                  num. solved   	      avg. moves    	           avg. states tested
+-----------------------------------------------------------------------------------------------------------------------
+Greedy (heuristic h1)		 4		        109.0				416.5
+Greedy (heuristic h2)		10		        75.4				370.7
+
+A* (heuristic h1)		10		        21				6301.7
+A* (heuristic h2)		10		        21				482.3
+
+
+puzzles with 24-move optimal solutions
+----------------------------------------------------------------------
+algorithm                   num. solved   	      avg. moves    	           avg. states tested
+-----------------------------------------------------------------------------------------------------------------------
+Greedy (heuristic h1)		 6		        123.67				2856.2
+Greedy (heuristic h2)		10		        75.2				593.3
+
+A* (heuristic h1)		1		        24				23365
+A* (heuristic h2)		10		        24				1065.5
+
+
+puzzles with 27-move optimal solutions
+----------------------------------------------------------------------
+algorithm                   num. solved   	      avg. moves    	          avg. states tested
+-----------------------------------------------------------------------------------------------------------------------
+Greedy (heuristic h1)		 4		        197.5				4285.5
+Greedy (heuristic h2)		10		        90.8				693.9
+
+A* (heuristic h1)		0		        0				0 
+(All puzzles took too long to be solved, over 30 seconds for each search)
+A* (heuristic h2)		10		        27				5043
+
+
+Based on the data collected on these four tables, heuristic function h2 is the more efficient and more effective function compared to h1. When I ran each algorithm for every file, h2 always was able to solve all 10 puzzles for both Greedy and A*. The longest search time for both algorithms under h2 was about 15-20 seconds. Whereas under h1, as the list started to grow, A* started to take too long in solving the puzzles. From solving all 10 puzzles for the 18 moves file to taking too long to solve no puzzles for the 27 moves file, the A* algorithm's time to solve the puzzle under h1 grew exponentially. Another stark contrast between both heuristic functions is the average amount of states tested. Under h2, the average number of tested states was always less compared to h1 average when comparing the same algorithms. H2 is more efficient as it consumes less time and memory to solve the puzzles. A* and Greedy thrived under h2.

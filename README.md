@@ -6,7 +6,7 @@ to rearrange all the tiles with the blank tile at the top left position followed
 blank tile, the next tile would be 1, then 2, and so on until the 8 tile at the bottom right corner of the grid. This program has five 
 classes: Board, State, Searcher, Eight_Puzzle, and Timer. 
 
-The Board class generates and represents the Eight Puzzle grid. Its methods laythe foundation of the program and can perform rudimentary 
+The Board class generates and represents the Eight Puzzle grid. Its methods lay the foundation of the program and can perform rudimentary 
 tasks, such as moving the blank tile by one tile in any direction (NESW). 
 
 The State class represents a state in the state-space search tree of the Eight Puzzle. The class imports the Board class. A state in the 
